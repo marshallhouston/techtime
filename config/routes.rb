@@ -19,14 +19,25 @@ Rails.application.routes.draw do
   get 'orders/:id', to: 'orders#show', as: :order
   post 'orders', to: 'orders#create'
 
-  namespace :admin do
-    resources :users, only: [:edit, :update, :show]
-    resources :freelancers, only: [:new, :create, :index, :edit, :update]
+  # namespace :admin do
+    # resources :users, only: [:edit, :update, :show]
+  get 'admin/users/:id/edit', to: 'admin/users#edit', as: :edit_admin_user
+  patch 'admin/users/:id', to: 'admin/users#update'
+  get 'admin/users/:id', to: 'admin/users#show', as: :admin_user
 
-    resources :orders, only: [:show]
-    get 'dashboard', to: 'orders#index'
-    patch 'dashboard', to: 'orders#update'
-  end
+    # resources :freelancers, only: [:new, :create, :index, :edit, :update]
+  get 'admin/freelancers/new', to: 'admin/freelancers#new', as: :new_admin_freelancer
+  get 'admin/freelancer/:id', to: 'admin/freelancers#show', as: :admin_freelancer
+  post 'admin/freelancers', to: 'admin/freelancers#create'
+  get 'admin/freelancers', to: 'admin/freelancers#index'
+  get 'admin/freelancers/:id/edit', to: 'admin/freelancers#edit', as: :edit_admin_freelancer
+  patch 'admin/freelancer/:id', to: 'admin/freelancers#update'
+
+    # resources :orders, only: [:show]
+  get 'admin/orders/:id', to: 'admin/orders#show', as: :admin_order
+  get 'admin/dashboard', to: 'admin/orders#index', as: :admin_orders
+  patch 'admin/dashboard', to: 'admin/orders#update'
+  # end
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
