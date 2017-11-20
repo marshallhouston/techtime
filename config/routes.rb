@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   # resources :users, only: [:new, :create, :show]
   get 'users/new', to: 'users#new', as: :new_user
   post 'users', to: 'users#create', as: :users
-  resources :orders, only: [:index, :show, :create]
+
+  # resources :orders, only: [:index, :show, :create]
+  get 'orders', to: 'orders#index', as: :orders
+  get 'orders/:id', to: 'orders#show', as: :order
+  post 'orders', to: 'orders#create'
 
   namespace :admin do
     resources :users, only: [:edit, :update, :show]
