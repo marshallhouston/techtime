@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   get 'cart', to: 'cart#show'
   patch 'cart', to: 'cart#update'
-  get ':slug', to: 'categories#show' # as: :category to allow category_path(category.slug) to be used
+  get ':slug', to: 'categories#show', as: :category
   delete 'cart', to: 'cart#destroy'
 
 
