@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :cart, only: [:create]
   resources :freelancers, only: [:index, :show]
-  resources :categories, only: [:index, :show]
+  resources :categories, only: [:index]
   resources :users, only: [:new, :create, :show]
   resources :orders, only: [:index, :show, :create]
 
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   get '/cart', to: 'cart#show'
   patch '/cart', to: 'cart#update'
-  get '/:id', to: 'categories#show'
+  get '/:slug', to: 'categories#show'
   delete '/cart', to: 'cart#destroy'
 
 

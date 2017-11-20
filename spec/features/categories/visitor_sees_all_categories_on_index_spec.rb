@@ -14,6 +14,6 @@ require 'rails_helper'
 
     scenario " and when category is clicked, they are taken to the category show page" do
       click_on "#{@categories[1].title}"
-      expect(current_path).to eq("/categories/#{@categories[1].title}")
+      expect(current_path).to eq("/#{@categories[1].title}")
     end
   end
