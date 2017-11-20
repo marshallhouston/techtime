@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'freelancers', to: 'freelancers#index', as: :freelancers
   get 'freelancers/:id', to: 'freelancers#show', as: :freelancer
 
-  resources :categories, only: [:index]
+  # resources :categories, only: [:index]
+  get 'categories', to: 'categories#index', as: :categories
+  
   resources :users, only: [:new, :create, :show]
   resources :orders, only: [:index, :show, :create]
 
