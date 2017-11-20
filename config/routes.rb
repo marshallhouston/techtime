@@ -9,8 +9,10 @@ Rails.application.routes.draw do
 
   # resources :categories, only: [:index]
   get 'categories', to: 'categories#index', as: :categories
-  
-  resources :users, only: [:new, :create, :show]
+
+  # resources :users, only: [:new, :create, :show]
+  get 'users/new', to: 'users#new', as: :new_user
+  post 'users', to: 'users#create', as: :users
   resources :orders, only: [:index, :show, :create]
 
   namespace :admin do
@@ -24,7 +26,7 @@ Rails.application.routes.draw do
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
-  get 'dashboard', to: 'users#show'
+  get 'dashboard', to: 'users#show', as: :user
   get 'logout', to: 'sessions#destroy'
 
   get 'cart', to: 'cart#show'
